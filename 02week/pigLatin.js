@@ -9,16 +9,16 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word) {
-  let newWord = word.trim().toLowerCase();
+  word = word.trim().toLowerCase();
   let vowels = /[aeiou]/;
-    if (newWord[0].match(vowels)){
-    return newWord + 'yay';
+    if (word[0].match(vowels)){
+    return word + 'yay';
   }
   else {
     let vowelIndice = word.indexOf(word.match(vowels)[0]);
-    newWord = word.trim().toLowerCase().substr(vowelIndice) + word.trim().toLowerCase().substr(0, vowelIndice);
+    word = word.trim().toLowerCase().substr(vowelIndice) + word.trim().toLowerCase().substr(0, vowelIndice);
   }
-  return newWord + 'ay';
+  return word + 'ay';
 }
 
 
