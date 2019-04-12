@@ -32,7 +32,7 @@ function verticalWin() {
 }
 
 function diagonalWin() {
-  // Your code here
+  // Your code here]
 }
 
 function checkForWin() {
@@ -40,7 +40,7 @@ function checkForWin() {
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+  // Your code
 }
 
 function getPrompt() {
