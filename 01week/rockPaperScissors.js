@@ -32,7 +32,7 @@ function rockPaperScissors(hand1, hand2) {
   } else if (hand1 == 'nuke' || hand2 == 'nuke') {
     return "nuke destroys all!";
   } else {
-    return 'Not a valid entry';
+    return 'no winner!';
   }
     
 } 
