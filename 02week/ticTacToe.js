@@ -24,23 +24,66 @@ function printBoard() {
 }
 
 function horizontalWin() {
-  // Your code here
+  for (let i = 0; i < board.length; i++) {
+    if(board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][0] == playerTurn) {
+      return true;
+    }
+  } return false;
 }
 
 function verticalWin() {
-  // Your code here
+  for (let i = 0; i < board[0].length; i++) {
+    if (board[0][i] == playerTurn && board[0][i] == board[1][i] && board[0][i] == board[2][i]) {
+      return true;
+    }
+  } return false;
 }
 
 function diagonalWin() {
-  // Your code here
+<<<<<<< HEAD:02week/ticTacToe.js
+  if (board[1][1] == playerTurn) {
+    if (board[0][0] == playerTurn && board [2][2] == playerTurn) {
+      return true;
+    } else if (board[0][2] == playerTurn && board[2][0] == playerTurn) {
+      return true;
+    } else 
+    return false;
+  } else 
+  return false;
+=======
+  // Your code here]
+>>>>>>> gh-pages:03week/ticTacToe.js
 }
 
 function checkForWin() {
-  // Your code here
+  if (horizontalWin() || verticalWin() || diagonalWin()) {
+    console.log(playerTurn + ' WINS!');
+    return true;
+  } else 
+
+  return false;
 }
 
 function ticTacToe(row, column) {
-  // Your code here
+<<<<<<< HEAD:02week/ticTacToe.js
+  if (board[row][column] === ' ') {
+    board[row][column] = playerTurn;
+  } else {
+    console.log('Try again! That place is already taken.');
+    return playerTurn;
+  }
+  checkForWin();
+  if (playerTurn == 'X') {
+    playerTurn = 'O';
+    
+  }
+  else if (playerTurn == 'O') {
+    playerTurn = 'X';
+    checkForWin();
+  } 
+=======
+  // Your code
+>>>>>>> gh-pages:03week/ticTacToe.js
 }
 
 function getPrompt() {
