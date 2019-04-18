@@ -9,9 +9,19 @@ const rl = readline.createInterface({
 
 
 function pigLatin(word) {
+  word = word.trim().toLowerCase();
+  let vowels = /[aeiou]/;
 
-  // Your code here
+  if (word[0].match(vowels)){
+    return word + 'yay';
+  }
 
+  else {
+    let vowelIndice = word.indexOf(word.match(vowels)[0]);
+    word = word.trim().toLowerCase().substr(vowelIndice) + word.trim().toLowerCase().substr(0, vowelIndice);
+  }
+  return word + 'ay';
+  
 }
 
 
@@ -43,6 +53,9 @@ if (typeof describe === 'function') {
       assert.equal(pigLatin('HeLlO '), 'ellohay');
       assert.equal(pigLatin(' RoCkEt'), 'ocketray');
     });
+    it('Should separate two words and return them together', () => {
+      assert.equal(pigLatin('Hop Fest'), 'Ophay Estfay');
+    }); 
   });
 } else {
 
