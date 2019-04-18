@@ -40,6 +40,7 @@ function verticalWin() {
 }
 
 function diagonalWin() {
+<<<<<<< HEAD:02week/ticTacToe.js
   if (board[1][1] == playerTurn) {
     if (board[0][0] == playerTurn && board [2][2] == playerTurn) {
       return true;
@@ -49,6 +50,9 @@ function diagonalWin() {
     return false;
   } else 
   return false;
+=======
+  // Your code here]
+>>>>>>> gh-pages:03week/ticTacToe.js
 }
 
 function checkForWin() {
@@ -61,6 +65,7 @@ function checkForWin() {
 }
 
 function ticTacToe(row, column) {
+<<<<<<< HEAD:02week/ticTacToe.js
   if (board[row][column] === ' ') {
     board[row][column] = playerTurn;
   } else {
@@ -76,6 +81,9 @@ function ticTacToe(row, column) {
     playerTurn = 'X';
     checkForWin();
   } 
+=======
+  // Your code
+>>>>>>> gh-pages:03week/ticTacToe.js
 }
 
 function getPrompt() {
