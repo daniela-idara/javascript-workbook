@@ -9,10 +9,33 @@ const rl = readline.createInterface({
 
 
 function rockPaperScissors(hand1, hand2) {
+  hand1 = hand1.trim().toLowerCase();
+  hand2 = hand2.trim().toLowerCase();
+  if (hand1 == hand2) {
+    return"It's a tie!";
 
-  // Write code here
+  } else if (hand1 == 'rock' && hand2 == 'scissors') {
+    return "Hand one wins!";
+  } else if (hand1 == 'rock' && hand2 == 'scissors') {
+    return "Hand one wins!";
+  } else if (hand1 == 'paper' && hand2 == 'rock') {
+    return "Hand one wins!";
+  } else if (hand1 == 'scissors' && hand2 == 'paper') {
+    return "Hand one wins!";  
 
-}
+  } else if (hand1 == 'paper' && hand2 == 'scissors') {
+    return "Hand two wins!";
+  } else if (hand1 == 'scissors' && hand2 == 'rock') {
+    return "Hand two wins!";
+  } else if (hand1 == 'rock' && hand2 == 'paper') {
+    return "Hand two wins!";
+  } else if (hand1 == 'nuke' || hand2 == 'nuke') {
+    return "nuke destroys all!";
+  } else {
+    return 'no winner!';
+  }
+    
+} 
 
 function getPrompt() {
   rl.question('hand1: ', (answer1) => {
@@ -42,6 +65,21 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+    });
+    it('should detect Hand one wins', () => {
+      assert.equal(rockPaperScissors('rock', 'scissors'), "Hand one wins!");
+      assert.equal(rockPaperScissors('scissors', 'paper'), "Hand one wins!");
+      assert.equal(rockPaperScissors('paper', 'rock'), "Hand one wins!");
+    });
+    it('should detect Hand two wins', () => {
+      assert.equal(rockPaperScissors('rock', 'paper'), "Hand two wins!");
+      assert.equal(rockPaperScissors('scissors', 'rock'), "Hand two wins!");
+      assert.equal(rockPaperScissors('paper', 'scissors'), "Hand two wins!");
+    });
+    it('should detect a valid entry', () => {
+      assert.equal(rockPaperScissors('rOcket', 'sNail'), "Not a valid entry");
+      assert.equal(rockPaperScissors('ZeBra', 'ELEphanT'), "Not a valid entry");
+      assert.equal(rockPaperScissors('tortoiSe', 'hare'), "Not a valid entry");
     });
   });
 } else {
