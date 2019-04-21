@@ -1,30 +1,32 @@
 'use strict';
-
+/* 
 const assert = require('assert');
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
+ */
 
 function pigLatin(word) {
-  word = word.trim().toLowerCase();
+  let newWord = textWord.value;
+  word = newWord.trim().toLowerCase();
   let vowels = /[aeiou]/;
 
   if (word[0].match(vowels)){
-    return word + 'yay';
+    document.getElementById('translation').innerHTML = word + 'yay';
   }
 
   else {
     let vowelIndice = word.indexOf(word.match(vowels)[0]);
-    word = word.trim().toLowerCase().substr(vowelIndice) + word.trim().toLowerCase().substr(0, vowelIndice);
+    word = word.substr(vowelIndice) + word.substr(0, vowelIndice);
+    document.getElementById('translation').innerHTML = word + 'ay';
   }
-  return word + 'ay';
+  
   
 }
 
-
+/* 
 function getPrompt() {
   rl.question('word ', (answer) => {
     console.log( pigLatin(answer) );
@@ -62,3 +64,4 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+ */
