@@ -19,23 +19,64 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+function movePiece(startStack, endStack) {
+  let startArr = stacks[startStack];
+  let endArr = stacks[endStack];
 
+  endArr.push(startArr.pop());
 }
 
-function isLegal() {
-  // Your code here
 
+function isLegal(startStack, endStack) {
+  let startArr = stacks[startStack];
+  let endArr = stacks[endStack];
+
+  if (startArr.length === 0){
+    console.log ("choose from a valid stack");
+  }
+
+  else if(startStack === endStack){
+    console.log("Not a valid move");
+    return false;
+  }
+
+  else if (startArr[startArr.length - 1] > endArr[endArr.length - 1]){
+    console.log("Not a valid move");
+    return false;
+  }
+
+  else{
+    return true;
+  }
 }
 
 function checkForWin() {
-  // Your code here
+
+  let win = "4,3,2,1";
+  let bString = stacks.b.toString();
+  let cString = stacks.c.toString();
+  
+  if (bString === win){
+    return true;
+  }
+
+  else if(cString === win){
+    return true;
+  }
+
+  else{
+    return false;
+  }
 
 }
 
+
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
+
+  if(isLegal(startStack, endStack)){
+    movePiece(startStack,endStack);
+  }
+  checkForWin();
 
 }
 
@@ -63,11 +104,13 @@ if (typeof describe === 'function') {
   describe('#isLegal()', () => {
     it('should not allow an illegal move', () => {
       stacks = {
-        a: [4, 3, 2],
+        a: [4, 3],
         b: [1],
-        c: []
+        c: [2]
       };
       assert.equal(isLegal('a', 'b'), false);
+      assert.equal(isLegal('a', 'c'), false);
+      assert.equal(isLegal('c', 'b'), false);
     });
     it('should allow a legal move', () => {
       stacks = {
@@ -84,6 +127,10 @@ if (typeof describe === 'function') {
       assert.equal(checkForWin(), true);
       stacks = { a: [1], b: [4, 3, 2], c: [] };
       assert.equal(checkForWin(), false);
+      stacks = { a: [4,3,2,1], b: [], c:[]};
+      assert.equal(checkForWin(), false);
+      stacks = { a: [], b: [], c:[4,3,2,1]};
+      assert.equal(checkForWin(), true);
     });
   });
 
@@ -92,3 +139,4 @@ if (typeof describe === 'function') {
   getPrompt();
 
 }
+
