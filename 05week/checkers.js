@@ -8,13 +8,20 @@ const rl = readline.createInterface({
 });
 
 
-function Checker() {
-  // Your code here
+class Checker {
+  constructor(color) {
+    if (color === 'white') {
+      this.symbol = String.fromCharCode(0x125CB);
+  } else {
+    this.symbol = String.fromCharCode(0x125CF);
+   }
+ }
 }
 
 class Board {
   constructor() {
     this.grid = []
+    this.checkers = []
   }
   // method that creates an 8x8 array, filled with null values
   createGrid() {
@@ -51,19 +58,67 @@ class Board {
     }
     console.log(string);
   }
+  createCheckers (){
+   let whitePositions = [
+   [0, 1], [0, 3], [0, 5], [0, 7],
+   [1, 0], [1, 2], [1, 4], [1, 6],
+   [2, 1], [2, 3], [2, 5], [2, 7]
+  ];
 
-  // Your code here
+   let blackPositions = [
+   [5, 0], [5, 2], [5, 4], [5, 6],
+   [6, 1], [6, 3], [6, 5], [6, 7],
+   [7, 0], [7, 2], [7, 4], [7, 6]
+  ];
+
+   for (let i=0; i < whitePositions.length; i++) {
+     let whiteChecker = new Checker('white');
+     let row = whitePositions[i][0];
+     let col = whitePositions[i][1];
+      this.grid[row][col] = whiteChecker;
+      this.checkers.push(whiteChecker);  
+   }
+   for (let i=0; i < blackPositions.length; i++) {
+    let blackChecker = new Checker('black');
+    let row = blackPositions[i][0];
+    let col = blackPositions[i][1];
+     this.grid[row][col] = blackChecker;
+     this.checkers.push(blackChecker);  
+   }
+  }
+  selectChecker(row, column){
+    return this.grid[row][column];
+  }
+  killChecker(position) {
+    let checker = this.selectChecker(position.charAt(0), position.charAt(1));
+    let x = this.checkers.indexOf(checker);
+    this.checkers.splice(x, 1);
+    this.grid[position.charAt(0)][position.charAt(1)] = null;
+  }
 }
 
 class Game {
   constructor() {
     this.board = new Board;
   }
+  
   start() {
     this.board.createGrid();
+    this.board.createCheckers();
   }
-}
+   moveChecker(start, end){
+    let checker = this.board.selectChecker(start.charAt(0), start.charAt(1));
+      this.board.grid[start.charAt(0)][start.charAt(1)] = null;
+      this.board.grid[end.charAt(0)][end.charAt(1)] = checker;
+        
+    if(Math.abs(start.charAt(0) - end.charAt(0)) === 2 && Math.abs(start.charAt(0) - end.charAt(0)) === 2) {
+      let killPiece = (parseInt(start) + parseInt(end)) / 2;
+        this.board.killChecker(killPiece.toString());
+    }
 
+   } 
+
+}
 function getPrompt() {
   game.board.viewGrid();
   rl.question('which piece?: ', (whichPiece) => {
