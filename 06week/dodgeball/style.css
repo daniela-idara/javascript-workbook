@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+ul  {
+    list-style: none;
+  }
+
+div.blueTeam, div.redTeam{
+    display: block;
+    font-weight: bold;
+}
+
+div.blueTeam span::before, div.redTeam span::before {
+  content: attr(data-text);
+  background: white;
+  padding: 1px 8px;
+}
